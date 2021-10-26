@@ -2,6 +2,11 @@
   - [Identify AKI patients from MIMIC III database](#identify-aki-patients-from-mimic-iii-database)
     - [MIMIC III](#mimic-iii)
     - [KDIGO def of AKI](#kdigo-def-of-aki)
+  - [Clustering](#clustering)
+    - [Step1 Data Preprocessing](#step1-data-preprocessing)
+    - [Step2 Clustering](#step2-clustering)
+    - [Step3 Prediction](#step3-prediction)
+  - [Running](#running)
 - [Additional Notes](#additional-notes)
   - [tables of MIMIC III](#tables-of-mimic-iii)
   - [IDs for tests and criterions](#ids-for-tests-and-criterions)
@@ -32,10 +37,27 @@ satisfy any:
 $^1$: What is baselime?
 > baseline, which is known or presumed to have occurred within the prior 7 days;  
 
-$^2$: RRT is a derived table, no inition information is found in MIMIC III. (?)
+$^2$: RRT is a derived table, no inition information is found in MIMIC III. 
 
+For Query information, see [`SQL/README`](./SQL/README.md)
 
+## Clustering
 
+### Step1 Data Preprocessing
+Normalization  
+Fill NA with average value
+
+### Step2 Clustering
+Dimensional reduction with UMAP  
+Clustering wiht `kmeans`  
+Visualization
+
+### Step3 Prediction
+Train with SVM.
+save model and give prediction.
+
+## Running 
+see `example.py`
 
 <!-- ============================================= -->
 <!-- ====           Additional Notes          ==== -->

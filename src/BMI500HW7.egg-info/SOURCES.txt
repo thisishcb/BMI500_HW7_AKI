@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+src/BMI500HW7/__init__.py
+src/BMI500HW7/main.py
+src/BMI500HW7.egg-info/PKG-INFO
+src/BMI500HW7.egg-info/SOURCES.txt
+src/BMI500HW7.egg-info/dependency_links.txt
+src/BMI500HW7.egg-info/requires.txt
+src/BMI500HW7.egg-info/top_level.txt
+src/BMI500HW7/files/__init__.py
+src/BMI500HW7/files/aki_patients.csv
+src/BMI500HW7/files/model.pkl
+src/BMI500HW7/files/patient_data.csv
+src/BMI500HW7/files/umap.pkl

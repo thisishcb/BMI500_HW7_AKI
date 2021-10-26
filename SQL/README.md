@@ -48,3 +48,31 @@ SELECT * FROM `mimiciii-328704.mimicself.patients_stage`
 WHERE AKI_STAGE != 0
 ORDER BY AKI_STAGE,SUBJECT_ID
 ```
+
+## `GET_DATA_BEFORE_AKI`
+- simply filter out all data 6-12 hours before the patient is identified as AKI
+  - except urine and serum creatine
+
+## `GET_POPULAR`
+- Try to get popular indicators/tests available in patients.
+
+## `GET_DATA_24` 
+- With former SQL for 6-12 hours
+  - Among 25941 AKI patients, only ITEM 51221 reach 10000 subjects which is less than 50% of all subjects.
+- Extend the time to 6-24h before AKI, six indicator reach 21000
+- Which are `51221`, `50912`, `51006`, `51265`, `50902`, `50882`
+
+| ROW_ID | ITEMID | LABEL          | FLUID | CATEGORY   | LOINC_CODE |
+| ------ | ------ | -------------- | ----- | ---------- | ---------- |
+| 83     | 50882  | Bicarbonate    | Blood | Chemistry  | 1963-8     |
+| 103    | 50902  | Chloride       | Blood | Chemistry  | 2075-0     |
+| 206    | 51006  | Urea Nitrogen  | Blood | Chemistry  | 3094-0     |
+| 421    | 51221  | Hematocrit     | Blood | Hematology | 4544-3     |
+| 465    | 51265  | Platelet Count | Blood | Hematology | 777-3      |
+
+
+## `AGGREAGATE_DATA`
+- aggregate data for training
+- `subject_ID`, `51221`, `50912`(Creatinine), `51006`, `51265`, `50902`, `50882`; `URINE`
+- `URINE` data are 
+- The data limited in past 6-24h are hard to find the difference of change, most data has only one record for each patient in 6-24h, so we would use absolute value and average if there are multiple
