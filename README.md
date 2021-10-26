@@ -7,6 +7,9 @@
     - [Step2 Clustering](#step2-clustering)
     - [Step3 Prediction](#step3-prediction)
   - [Running](#running)
+    - [Functions](#functions)
+      - [for the clustering and visualization](#for-the-clustering-and-visualization)
+      - [for the prediction task:](#for-the-prediction-task)
 - [Additional Notes](#additional-notes)
   - [tables of MIMIC III](#tables-of-mimic-iii)
   - [IDs for tests and criterions](#ids-for-tests-and-criterions)
@@ -58,6 +61,43 @@ save model and give prediction.
 
 ## Running 
 see `example.py`
+
+### Functions
+Initialize with
+```
+from BMI500HW7.main import aki_model
+aki = aki_model()
+aki.load_data()
+```
+
+#### for the clustering and visualization
+UMAP, tSNE, and cluster result are pre-calculated and stored, can directly used for visualiztion:
+```
+aki.visualization(type={type}, colorby={key}, save ={PATH/TO/FILE})
+```
+available types are `umap` and `tsne`, default `umap`;  
+valid keys include: `'cluster', 'AKI_STAGE', 'GENDER', 'BICAR_AVG', 'CHLO_AVG', 'UN_AVG', 'HEM_AVG', 'PC_AVG', 'uo_rt_6hr_avg', 'uo_rt_6hr_max', 'uo_rt_6hr_min', 'uo_rt_12hr_avg', 'uo_rt_12hr_max', 'uo_rt_12hr_min', 'uo_rt_24hr_avg', 'uo_rt_24hr_max', 'uo_rt_24hr_min', 'creat_diff', 'creat_avg', 'creat_baseline'`. default: `AKI_STAGE`
+path to save is optional;
+
+Incase error occurs:
+These values can be re-run with:
+```
+aki.get_umap()
+aki.get_tsne()
+aki.cluster()
+```
+
+
+
+#### for the prediction task:
+Since the model is stored, can direct predict with trained model:
+```
+aki.predict([["F",24,107.5,18.5,27.85,55.5,1.62,1.9795,1.2941,1.497776471,1.6923,1.3012,1.441717647,1.5242,1.2687,0.1,0.45,0.4]])
+```
+If the model has issues with compatibility or file broken, can train the model again with 
+```
+aki.train_on_data()
+```
 
 <!-- ============================================= -->
 <!-- ====           Additional Notes          ==== -->
